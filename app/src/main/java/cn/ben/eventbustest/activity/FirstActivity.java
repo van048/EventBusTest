@@ -174,13 +174,14 @@ public class FirstActivity extends AppCompatActivity {
 
     @SuppressWarnings("unused")
     @Subscribe(priority = 123)
-    public void onEventPriority(MessageEvent event) {
+    public void onMessagePriority(MessageEvent event) {
         log("onMessagePriority " + event.message);
     }
 
     @SuppressWarnings("unused")
     @Subscribe(priority = -1)
-    public void onEventMinusOnePriority(MessageEvent event) {
+    public void onMessageMinusOnePriority(MessageEvent event) {
+        log("onMessageMinusOnePriority " + event.message);
         // 中止事件传递，后续事件不在调用,注意，只能在传递事件的时候调用
         // 注释这个来看效果
         EventBus.getDefault().cancelEventDelivery(event);
@@ -188,7 +189,7 @@ public class FirstActivity extends AppCompatActivity {
 
     @SuppressWarnings("unused")
     @Subscribe(priority = -2)
-    public void onEventMinusTwoPriority(MessageEvent event) {
+    public void onMessageMinusTwoPriority(MessageEvent event) {
         log("onMessageMinusTwoPriority " + event.message);
     }
 
